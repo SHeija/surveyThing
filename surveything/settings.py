@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.messages',
+    #'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +78,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'surveything',
         'USER': 'surveything_admin',
-        'PASSWORD': '1234admin', #top security
-        'HOST': 'localhost',
-        'PORT': '',
+        'PASSWORD': '1234admin',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
