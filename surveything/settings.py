@@ -28,13 +28,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = '/surveys'
+#LOGIN_REDIRECT_URL = '/accounts/index'
+LOGOUT_REDIRECT_URL = '/accounts/index'
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'surveys.apps.SurveysConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
