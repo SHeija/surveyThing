@@ -6,7 +6,8 @@
 <h2>Add Survey</h2>
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ sform.as_p }}
+  {{ qforms.as_p }}
   <button type="submit">Create</button>
 </form>
 {% endblock %}
