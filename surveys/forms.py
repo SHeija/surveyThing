@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from .models import Survey, Question
 from betterforms.multiform import MultiModelForm
     
@@ -11,9 +11,3 @@ class QuestionForm(ModelForm):
     class Meta:
         model = Question
         fields = ['question_text']
-
-class SurveyCreationForm(ModelForm):
-    form_classes = {
-        'survey': SurveyForm,
-        'question': QuestionForm,
-    }
