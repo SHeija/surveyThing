@@ -1,17 +1,14 @@
 from django.shortcuts import render
-from django.forms import formset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 
-
-from .forms import SurveyForm, QuestionForm
+from .forms import SurveyForm, QuestionFormSet
 from .models import Survey, Question
 
 def index(request):
     return HttpResponse("Surveys yo")
 
 def add(request):
-    QuestionFormSet = formset_factory(QuestionForm, extra=5)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         sform = SurveyForm(request.POST)
