@@ -3,12 +3,7 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'surveys:add_survey' %}">Add a survey</a></p>
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
+LIst of questions here
+<p><a href="{% url 'surveys:add_survey' %}">Add a survey</a></p>
+
 {% endblock %}
