@@ -3,7 +3,32 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-LIst of questions here
 <p><a href="{% url 'surveys:add_survey' %}">Add a survey</a></p>
+{% if surveys_list %}
+    <table class="table">
+        <thead class="thead-dark">
+            <th>Survey name</th>
+            <th></th>
+        </thead>
+    {% for survey in surveys_list %}
+        <tr>
+            <td>
+                <h4><a href="{% url 'surveys:detail' survey.id %}">{{ survey.title }}</a></h6>
+            </td>
+           
+            <td>
+                <form method="POST" action="{% url 'surveys:delete' survey.id %}">
+                    {% csrf_token %}
+                    <button type='submit' class="btn btn-primary btn-danger">delete</button>
+                </form>
+                
+            </td>
+          
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No surveys are available.</p>
+{% endif %}
 
 {% endblock %}

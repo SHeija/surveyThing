@@ -10,5 +10,5 @@ urlpatterns = [
     path('', views.index), #?????
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('index/', views.index), #????
-    path('profile/', TemplateView.as_view(template_name='accounts/profile.html')),   
+    path('profile/', views.profile),   
 ]

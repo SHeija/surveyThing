@@ -1,15 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
 #from django.contrib.auth.models import User
 
-from .forms import SurveyForm, QuestionFormSet
+from .forms import SurveyForm, QuestionFormSet, QuestionModelFormSet
 from .models import Survey, Question
 
 def index(request):
     return HttpResponse("Surveys yo")
 
+def detail(request, survey_id):
+    template_name = 'surveys/detail.html'
+    survey = get_object_or_404(Survey, pk=survey_id)
+    questions = get_list_or_404(Question, survey_id=survey_id)
+    context = {
+        'survey': survey,
+        'questions': questions
+    }
+    return render(request, template_name, context)
+
+def delete(request, survey_id):
+    survey = get_object_or_404(Survey, pk=survey_id)
+    survey.delete()
+    return HttpResponseRedirect('/accounts/profile/')
+
+
 def add(request):
+    template_name = 'surveys/addNew.html'
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         sform = SurveyForm(request.POST)
@@ -41,4 +60,4 @@ def add(request):
         'qforms': qforms,
     }
 
-    return render(request, 'surveys/addNew.html', context)
+    return render(request, template_name, context)

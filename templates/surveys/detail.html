@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<table class="table">
+    <tr>
+        <td>Title</td>
+        <td>{{ survey.title }}</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>{{ survey.description }}</td>
+    </tr>  
+
+    {% for question in questions %}
+    <tr>
+        <td>Question</td>
+        <td>{{ question.question_text }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<button class="btn btn-primary btn-info">Download JSON</button>
+{% endblock %}

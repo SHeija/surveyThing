@@ -14,3 +14,5 @@ class QuestionForm(ModelForm):
 
 QuestionFormSet = formset_factory(QuestionForm, extra=1)
 
+QuestionModelFormSet = modelformset_factory(Question, fields=('question_text',))
+

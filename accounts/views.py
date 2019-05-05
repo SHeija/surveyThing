@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 
+from surveys.models import Survey
+
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -14,3 +16,11 @@ class SignUp(generic.CreateView):
 def index(request):
     return HttpResponse("Accounts index")
 
+def profile(request):
+    template_name = 'accounts/profile.html'
+    surveys_list = Survey.objects.filter(author_id=request.user.id)
+    context = {
+        'surveys_list': surveys_list,
+    }
+
+    return render(request, template_name, context)
