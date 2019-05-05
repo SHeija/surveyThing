@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
+#from django.contrib.auth.models import User
 
 from .forms import SurveyForm, QuestionFormSet
 from .models import Survey, Question
@@ -18,6 +19,7 @@ def add(request):
             # save the survey
             survey = sform.save(commit=False)
             survey.date_created = timezone.now()
+            survey.author = request.user
             survey.save()
             
             #saving questions
