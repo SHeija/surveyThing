@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, UpdateView
 #from django.contrib.auth.models import User
 
 from .forms import SurveyForm, QuestionFormSet, QuestionModelFormSet
@@ -25,7 +25,6 @@ def delete(request, survey_id):
     survey = get_object_or_404(Survey, pk=survey_id)
     survey.delete()
     return HttpResponseRedirect('/accounts/profile/')
-
 
 def add(request):
     template_name = 'surveys/addNew.html'
@@ -61,3 +60,24 @@ def add(request):
     }
 
     return render(request, template_name, context)
+
+def edit_survey(request, survey_id):
+    template_name = 'surveys/edit_survey.html'
+    if request.method == 'POST':
+        sform = SurveyForm(request.POST)
+        if sform.is_valid():
+            survey = get_object_or_404(Survey, pk=survey_id)
+            survey.title = sform.cleaned_data['title']
+            survey.description = sform.cleaned_data['description']
+            survey.save()
+            return HttpResponseRedirect('/accounts/profile/')
+    else:
+        sform = SurveyForm(instance = get_object_or_404(Survey, pk=survey_id))
+    
+    context = {
+        'sform': sform
+    }
+
+    return render(request, template_name, context)
+
+        

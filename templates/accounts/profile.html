@@ -15,7 +15,9 @@
             <td>
                 <h4><a href="{% url 'surveys:detail' survey.id %}">{{ survey.title }}</a></h6>
             </td>
-           
+            <td>
+                <a href="{% url 'surveys:edit_survey' survey.id %}" class="btn btn-primary btn-warning">Edit survey body</a>
+            </td>
             <td>
                 <form method="POST" action="{% url 'surveys:delete' survey.id %}">
                     {% csrf_token %}
