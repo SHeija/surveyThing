@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
+#from django.forms import ModelForm, TextInput, Form, modelformset_factory, formset_factory
+
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView, UpdateView
-#from django.contrib.auth.models import User
 
-from .forms import SurveyForm, QuestionFormSet, QuestionModelFormSet
+from .forms import SurveyForm, QuestionFormSet #QuestionModelFormSet
 from .models import Survey, Question
 
 def index(request):
@@ -80,4 +81,33 @@ def edit_survey(request, survey_id):
 
     return render(request, template_name, context)
 
-        
+'''
+# I couldn't get this to work
+# qforms.is_valid() returns false if forms are emptied or removed
+
+def edit_questions(request, survey_id):
+    template_name = 'surveys/edit_questions.html'
+    QuestionModelFormSet = modelformset_factory(Question, fields=('question_text',))
+
+    if request.method == 'POST':
+        qforms = QuestionFormSet(request.POST)
+        if qforms.is_valid():
+            survey = get_object_or_404(Survey, pk=survey_id)
+            Question.objects.filter(survey_id=survey_id).delete() #deletes old questions
+            for qform in qforms:
+                new_q = qform.save(commit=False)
+                new_q.survey = survey
+                if new_q.question_text: #don't save empty questions
+                    new_q.save()
+            return HttpResponseRedirect('/accounts/profile/')
+        else:
+            return HttpResponseRedirect('/accounts/index/')
+    else:
+        qforms = QuestionModelFormSet(queryset=Question.objects.filter(survey_id=survey_id))
+    
+    context = {
+        'qforms': qforms
+    }
+
+    return render(request, template_name, context)
+'''        
