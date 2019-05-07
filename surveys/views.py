@@ -1,16 +1,13 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-#from django.forms import ModelForm, TextInput, Form, modelformset_factory, formset_factory
 
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView, UpdateView
 
 from .forms import SurveyForm, QuestionFormSet #QuestionModelFormSet
 from .models import Survey, Question
 
-def index(request):
-    return HttpResponse("Surveys yo")
+# UI views
 
 def detail(request, survey_id):
     template_name = 'surveys/detail.html'
@@ -80,6 +77,7 @@ def edit_survey(request, survey_id):
     }
 
     return render(request, template_name, context)
+
 
 '''
 # I couldn't get this to work

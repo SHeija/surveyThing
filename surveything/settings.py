@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 #LOGIN_REDIRECT_URL = '/accounts/index'
-LOGOUT_REDIRECT_URL = '/accounts/index'
+LOGOUT_REDIRECT_URL = '/accounts/bye'
 
 
 # Application definition
@@ -37,15 +37,24 @@ LOGOUT_REDIRECT_URL = '/accounts/index'
 INSTALLED_APPS = [
     'surveys.apps.SurveysConfig',
     'accounts.apps.AccountsConfig',
+    'api.apps.ApiConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'betterforms',
-    'dynamic_formsets'
+
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny', #top security since I didn't have time to configure permissions
+    ],
+    'DATE_INPUT_FORMATS': ['iso-8601', '%Y-%m-%dT%H:%M:%S.%f'],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

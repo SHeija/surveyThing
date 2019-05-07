@@ -13,8 +13,8 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
-def index(request):
-    return HttpResponse("Accounts index")
+def bye(request):
+    return HttpResponse("Bye!")
 
 def profile(request):
     template_name = 'accounts/profile.html'
