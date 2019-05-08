@@ -27,7 +27,7 @@ SECRET_KEY = '!z+m(opk8-&j8j1qb-_p6=25@%qs*1z@02ih3ebg9m35mf!(mm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [surveything.herokuapp.com]
+ALLOWED_HOSTS = ['surveything.herokuapp.com']
 
 #LOGIN_REDIRECT_URL = '/accounts/index'
 LOGOUT_REDIRECT_URL = '/accounts/bye'
