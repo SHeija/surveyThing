@@ -29,8 +29,11 @@ class QuestionAdd(generics.CreateAPIView):
 class SurveyAdd(generics.CreateAPIView):
     queryset = models.Survey.objects.all()
     serializer_class = serializers.SurveyCreateSerializer
+    
+    #author cannot be set manually
     author = ser_tools.HiddenField(default=ser_tools.CurrentUserDefault())
-
+    
+    #saves current user as an author
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 

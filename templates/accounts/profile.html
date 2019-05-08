@@ -9,6 +9,8 @@
         <thead class="thead-dark">
             <th>Survey name</th>
             <th></th>
+            <th></th>
+            <th></th>
         </thead>
     {% for survey in surveys_list %}
         <tr>
@@ -17,6 +19,9 @@
             </td>
             <td>
                 <a href="{% url 'surveys:edit_survey' survey.id %}" class="btn btn-primary btn-warning">Edit survey body</a>
+            </td>
+            <td>
+                <a href="/api/surveys/{{survey.id}}/?format=json" class="btn btn-primary btn-info">JSON</a>
             </td>
             <td>
                 <form method="POST" action="{% url 'surveys:delete' survey.id %}">

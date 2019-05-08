@@ -19,5 +19,5 @@
     {% endfor %}
 
 </table>
-<button class="btn btn-primary btn-info">Download JSON</button>
+<a href="/api/surveys/{{survey.id}}/?format=json" class="btn btn-primary btn-info">Download results as JSON</a>
 {% endblock %}

@@ -46,4 +46,3 @@ class SurveyCreateSerializer(DynamicFieldsModelSerializer):
         fields = ('id', 'title','description','author','date_created')
         model = models.Survey
 
-

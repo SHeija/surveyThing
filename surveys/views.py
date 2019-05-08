@@ -12,7 +12,7 @@ from .models import Survey, Question
 def detail(request, survey_id):
     template_name = 'surveys/detail.html'
     survey = get_object_or_404(Survey, pk=survey_id)
-    questions = get_list_or_404(Question, survey_id=survey_id)
+    questions = Question.objects.filter(survey_id=survey_id)
     context = {
         'survey': survey,
         'questions': questions
