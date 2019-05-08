@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +27,7 @@ SECRET_KEY = '!z+m(opk8-&j8j1qb-_p6=25@%qs*1z@02ih3ebg9m35mf!(mm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [surveything.herokuapp.com]
 
 #LOGIN_REDIRECT_URL = '/accounts/index'
 LOGOUT_REDIRECT_URL = '/accounts/bye'
@@ -142,4 +142,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #heroku recommended this
-django_heroku.settings(locals())
