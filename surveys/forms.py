@@ -1,6 +1,5 @@
 from django.forms import ModelForm, TextInput, Form, modelformset_factory, formset_factory
 from .models import Survey, Question
-from betterforms.multiform import MultiModelForm
     
 class SurveyForm(ModelForm):
    class Meta:
