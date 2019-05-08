@@ -24,11 +24,11 @@ class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class QuestionAdd(generics.CreateAPIView):
     queryset = models.Question.objects.all()
-    serializer_class = serializers.QuestionSerializer
+    serializer_class = serializers.QuestionCreateSerializer
 
 class SurveyAdd(generics.CreateAPIView):
     queryset = models.Survey.objects.all()
-    serializer_class = serializers.SurveySerializer
+    serializer_class = serializers.SurveyCreateSerializer
     author = ser_tools.HiddenField(default=ser_tools.CurrentUserDefault())
 
     def perform_create(self, serializer):
