@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views
 
+#name for cross-linking from other apps
 app_name='surveys'
 
 urlpatterns = [

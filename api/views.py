@@ -5,6 +5,8 @@ from surveys import models
 
 
 # REST views
+# XDetail = view for get, put, delete
+# XCreate = view for post
 
 class SurveyList(generics.ListAPIView):
     queryset = models.Survey.objects.all()
@@ -29,7 +31,7 @@ class QuestionAdd(generics.CreateAPIView):
 class SurveyAdd(generics.CreateAPIView):
     queryset = models.Survey.objects.all()
     serializer_class = serializers.SurveyCreateSerializer
-    
+
     #author cannot be set manually
     author = ser_tools.HiddenField(default=ser_tools.CurrentUserDefault())
     
