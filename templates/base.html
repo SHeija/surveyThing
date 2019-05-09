@@ -40,18 +40,16 @@
   <main>
     <div class="container">
       <div class="row spacer"></div>
-        <div class="row offset-2">
-          <div class="col-12">
+        <div class="col-12">
 
-              {% if user.is_authenticated %}
-                {% block content %}
-                {% endblock %}
-              {% else %}
-                <p>You are not logged in</p>
-                <a href="{% url 'login' %}">Login</a>
-              {% endif %}
+          {% if user.is_authenticated %}
+            {% block content %}
+            {% endblock %}
+          {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Login</a>
+          {% endif %}
 
-          </div>
         </div>
     </div>
   </main>

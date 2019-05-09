@@ -3,11 +3,27 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-  <p><a href="{% url 'signup' %}">Sign Up</a></p>
-</form>
+<div class="container">
+  
+  <div class="row justify-content-center align-items-center" style="height:100vh">
+      <div class="col-4">
+          <h2>Login</h2>
+
+          <div class="card">
+              <div class="card-body">
+                  <form action="" method="POST" autocomplete="off">
+                      <div class="form-group">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                      </div>
+                      <button type="submit" class="btn btn-primary">Login</button>
+                      <p><a href="{% url 'signup' %}">Sign Up</a></p>  
+
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 {% endblock %}
+

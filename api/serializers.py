@@ -28,6 +28,7 @@ class QuestionSerializer(DynamicFieldsModelSerializer):
         fields = ('id', 'survey', 'question_text', 'answers')
         model = models.Question
 
+#Non-nested serializer for create
 class QuestionCreateSerializer(DynamicFieldsModelSerializer):
     class Meta:
         fields = ('id', 'survey', 'question_text')
@@ -40,6 +41,7 @@ class SurveySerializer(DynamicFieldsModelSerializer):
         fields = ('id', 'title','description','author','date_created', 'questions')
         model = models.Survey
 
+#Non-nested serializer for create
 class SurveyCreateSerializer(DynamicFieldsModelSerializer):
     author = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
